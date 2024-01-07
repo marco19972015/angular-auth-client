@@ -1,35 +1,34 @@
 <main class="form-signin w-100 m-auto">
-    <form>
-      
+    <!-- To submit the form we set this form to the form in the ts file -->
+    <form [formGroup]="form" (submit)="submit()">
       <h1 class="h3 mb-3 fw-normal">Please register</h1>
 
+      <!-- Add formControlName to wire our variables (They should match our properties in the ts file) -->
       <div class="form-floating">
-        <input class="form-control" placeholder="First Name">
+        <input formControlName="first_name" class="form-control" placeholder="First Name">
         <label>First Name</label>
       </div>
 
       <div class="form-floating">
-        <input class="form-control"  placeholder="Last Name">
+        <input formControlName="last_name" class="form-control"  placeholder="Last Name">
         <label>Last Name</label>
       </div>
   
       <div class="form-floating">
-        <input type="email" class="form-control"  placeholder="name@example.com">
+        <input formControlName="email" type="email" class="form-control"  placeholder="name@example.com">
         <label>Email address</label>
       </div>
 
       <div class="form-floating">
-        <input type="password" class="form-control" placeholder="Password">
+        <input formControlName="password" type="password" class="form-control" placeholder="Password">
         <label>Password</label>
       </div>
 
       <div class="form-floating">
-        <input type="password" class="form-control" placeholder="Password Confirm">
+        <input formControlName="password_confirm" type="password" class="form-control" placeholder="Password Confirm">
         <label>Password Confirm</label>
       </div>
 
-  
-  
       <button class="btn btn-primary w-100 py-2" type="submit">Submit</button>
     </form>
   </main>

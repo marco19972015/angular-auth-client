@@ -8,6 +8,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 
+// Using Reactive form in this section
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
