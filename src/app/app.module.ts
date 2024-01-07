@@ -11,6 +11,9 @@ import { NavComponent } from './components/nav/nav.component';
 // Using Reactive form in this section
 import { ReactiveFormsModule } from '@angular/forms';
 
+// Provides a way to make HTTP requests using HttpCLient service. 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
