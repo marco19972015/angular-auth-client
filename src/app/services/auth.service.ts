@@ -1,11 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  // making it static only allows one authEmitter to be created. 
+  // If we make another instance of AuthService, it won't create another instance of authEmitter
+  static authEmitter = new EventEmitter<boolean>();
+
   accessToken = '';
 
 

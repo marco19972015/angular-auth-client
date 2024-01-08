@@ -15,20 +15,18 @@ export class NavComponent {
   ){}
 
   ngOnInit(){
-    this.authService.user().subscribe({
-      next: (res: any) => {
-        this.authenticated = true;
-      },
-    error: err => {
-      this.authenticated = false;
-    }
-    });
+    // The authenticated comes from the home component which lets us know if we are or not authenticated
+    AuthService.authEmitter.subscribe( (authenticated) => {
+      this.authenticated = authenticated;
+    })
   }
 
   logout(){
     this.authService.logout().subscribe(() =>{
       // reset the access token in the observer
       this.authService.accessToken = '';
+      // become unauthenticated
+      AuthService.authEmitter.emit(false);
     })
   }
 

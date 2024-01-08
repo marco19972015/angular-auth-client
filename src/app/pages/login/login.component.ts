@@ -29,6 +29,8 @@ export class LoginComponent {
      this.authService.login(this.form.getRawValue()).subscribe(
        (res: any) => {
         this.authService.accessToken = res.token;
+        // when we login we need to send the event that we are authenticated
+        AuthService.authEmitter.emit(true);
         this.router.navigate(['/'])
       }
      );
