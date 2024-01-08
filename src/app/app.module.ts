@@ -12,7 +12,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Provides a way to make HTTP requests using HttpCLient service. 
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,13 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,  // Provide the class
+      multi: true  // Allows us to provide multiple interceptors if needed
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

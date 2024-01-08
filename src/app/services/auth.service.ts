@@ -18,15 +18,13 @@ export class AuthService {
     return this.http.post(`${environment.api}/register`, body)
   }
 
-  // From login we can an access and a refresh token
-  // The access token comes from the response
-  // The refresh token needs an option withCredentials: true,
-  // The withCredentials option in an HTTP request in Angular determines whether to include credentials
-  // such as cookies or HTTP authentication in the request. 
-  // When set to true, it indicates that the browser should inclde credentials with the request
-
   login(body: any){
     // Send a request to the register endpoint and send the body
     return this.http.post(`${environment.api}/login`, body, {withCredentials: true})
+  }
+
+  user(){
+    // Send a get request to get user
+    return this.http.get(`${environment.api}/user`);
   }
 }
