@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit{
       next: (res: any) => {
         this.message = `Hi ${res.first_name} ${res.last_name}`
       },
-    error: err => {console.log(err)
+    error: err => {
+      this.message = `You are not authenticated`
     }
     });
   }

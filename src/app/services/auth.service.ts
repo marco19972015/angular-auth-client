@@ -27,4 +27,10 @@ export class AuthService {
     // Send a get request to get user
     return this.http.get(`${environment.api}/user`);
   }
+
+  refresh(){
+    // Send a request to the refresh endpoint (with credidentials is needed because we need the new access token)
+    return this.http.post(`${environment.api}/refresh`, {}, {withCredentials: true})
+  }
 }
+ 
