@@ -32,5 +32,11 @@ export class AuthService {
     // Send a request to the refresh endpoint (with credidentials is needed because we need the new access token)
     return this.http.post(`${environment.api}/refresh`, {}, {withCredentials: true})
   }
+
+  logout(){
+    // Send a post request to the logout endpoint (with credidentials is needed because we need to remove the refresh access token cookie)
+    return this.http.post(`${environment.api}/logout`, {}, {withCredentials: true})
+  }
+
 }
  

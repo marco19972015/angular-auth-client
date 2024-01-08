@@ -15,6 +15,9 @@ import { AuthService } from '../services/auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  // flag to stop infinite loop coming from the 401 error 
+  refresh = false;
+
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -26,8 +29,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // We want to pass all the errors down the pipe
     return next.handle(req).pipe(catchError((err: HttpErrorResponse) => {
-      // If the err is a 401 error then
-      if(err.status === 401){
+      // If the err is a 401 error and not true
+      if(err.status === 401 && !this.refresh){
+        // set refresh to true
+        this.refresh = true;
         // retry to send the request to the refresh token
         return this.authService.refresh().pipe(
           // if successful, res will contain the access token 
@@ -44,6 +49,9 @@ export class AuthInterceptor implements HttpInterceptor {
           })
         );
       }
+
+      // set it again to false
+      this.refresh = false;
       // If fails, throwError 
       return throwError(() => console.error(err))
     }));
