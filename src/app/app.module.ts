@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Provides a way to make HTTP requests using HttpCLient service. 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ForgotComponent } from './pages/forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
